@@ -1,0 +1,12 @@
+//
+// Prefix header for all source files of the 'ViewControllerFundamentals' target in the 'ViewControllerFundamentals' project
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
+#ifndef __VIEW_CONTROLLER_FUNDAMENTALS__
+#define __VIEW_CONTROLLER_FUNDAMENTALS__ 1
+#endif
