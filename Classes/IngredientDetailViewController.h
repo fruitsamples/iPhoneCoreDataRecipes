@@ -3,7 +3,7 @@
      File: IngredientDetailViewController.h
  Abstract: Table view controller to manage editing details of a recipe ingredient -- its name and amount.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

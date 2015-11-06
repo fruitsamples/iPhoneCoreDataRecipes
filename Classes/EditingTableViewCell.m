@@ -3,7 +3,7 @@
      File: EditingTableViewCell.m
  Abstract: A table view cell that displays a label and a text field so that a value can be edited. The user interface is loaded from a nib file.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

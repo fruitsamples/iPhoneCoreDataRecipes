@@ -4,7 +4,7 @@
  Abstract: Table view controller to manage an editable table view that displays a list of recipes.
  Recipes are displayed in a custom table view cell.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -77,9 +77,13 @@
 	
 	NSError *error = nil;
 	if (![[self fetchedResultsController] performFetch:&error]) {
-		// Handle error
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		abort();
 	}		
 }
 
@@ -162,7 +166,7 @@
     
     RecipeTableViewCell *recipeCell = (RecipeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:RecipeCellIdentifier];
     if (recipeCell == nil) {
-        recipeCell = [[[RecipeTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:RecipeCellIdentifier] autorelease];
+        recipeCell = [[[RecipeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:RecipeCellIdentifier] autorelease];
 		recipeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -197,16 +201,15 @@
 		// Save the context.
 		NSError *error;
 		if (![context save:&error]) {
-			// Handle error
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
+			abort();
 		}
 	}   
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // The table view should not be re-orderable.
-    return NO;
 }
 
 

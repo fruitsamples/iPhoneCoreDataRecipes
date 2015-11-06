@@ -3,7 +3,7 @@
      File: Recipe.m
  Abstract: Model class to represent a recipe.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -53,19 +53,11 @@
 
 @dynamic name, image, overview, thumbnailImage, instructions, ingredients, type, prepTime;
 
-
-+ (void)initialize {
-	if ( self == [Recipe class] ) {
-		UIImageToDataTransformer *transformer = [[UIImageToDataTransformer alloc] init];
-		[NSValueTransformer setValueTransformer:transformer forName:@"UIImageToDataTransformer"];
-	}
-}
-
 @end
 
 
 
-@implementation UIImageToDataTransformer
+@implementation ImageToDataTransformer
 
 
 + (BOOL)allowsReverseTransformation {

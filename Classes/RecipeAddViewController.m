@@ -4,7 +4,7 @@
  Abstract: View controller to allow the user to add a new recipe and choose its picture using the image picker.
  If the user taps Save, the recipe detail view controller is pushed so that the user can edit the new item.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -75,6 +75,12 @@
 }
 
 
+- (void)viewDidUnload {
+	self.nameTextField = nil;
+	[super viewDidUnload];
+}
+	
+	
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Support all orientations except upside-down
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
@@ -96,9 +102,13 @@
 
 	NSError *error = nil;
 	if (![recipe.managedObjectContext save:&error]) {
-		// Handle error
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		abort();
 	}		
     
 	[self.delegate recipeAddViewController:self didAddRecipe:recipe];
@@ -111,9 +121,13 @@
 
 	NSError *error = nil;
 	if (![recipe.managedObjectContext save:&error]) {
-		// Handle error
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		abort();
 	}		
 
     [self.delegate recipeAddViewController:self didAddRecipe:nil];

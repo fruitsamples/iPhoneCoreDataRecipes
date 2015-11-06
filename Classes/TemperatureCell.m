@@ -3,7 +3,7 @@
      File: TemperatureCell.m
  Abstract: A table view cell that displays temperature in Centigrade, Fahrenheit, and Gas Mark.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -52,41 +52,8 @@
 
 @implementation TemperatureCell
 
-@synthesize cLabel;
-@synthesize fLabel;
-@synthesize gLabel;
+@synthesize cLabel, fLabel, gLabel;
 
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-
-    if (self = [super initWithStyle:(UITableViewCellStyle)style reuseIdentifier:reuseIdentifier]) {
-        
-        // Add labels for Centrigrade, Fahrenheit, and Gas Mark as subviews
-        cLabel = [self newLabelWithXOffset:20];
-        [self.contentView addSubview:cLabel];
-        
-        fLabel = [self newLabelWithXOffset:120];
-        [self.contentView addSubview:fLabel];
-        
-        gLabel = [self newLabelWithXOffset:220];
-        [self.contentView addSubview:gLabel];
-        
-    }
-    return self;
-}
-
-
-- (UILabel *)newLabelWithXOffset:(CGFloat)x {
-    
-    // Configure and return a new label of a fixed size with given x-offset
-    CGRect frame = CGRectMake(x, 6.0, 80.0, 32.0);
-    UILabel *label = [[UILabel alloc] initWithFrame:frame];
-    label.font = [UIFont systemFontOfSize:22.0];
-    label.textAlignment = UITextAlignmentCenter;
-    label.highlightedTextColor = [UIColor whiteColor];
-    return label;
-    
-}
 
 - (void)setTemperatureDataFromDictionary:(NSDictionary *)temperatureDictionary {
     // Update text in labels from the dictionary

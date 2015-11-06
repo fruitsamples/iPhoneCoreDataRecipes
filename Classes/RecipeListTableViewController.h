@@ -4,7 +4,7 @@
  Abstract: Table view controller to manage an editable table view that displays a list of recipes.
  Recipes are displayed in a custom table view cell.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

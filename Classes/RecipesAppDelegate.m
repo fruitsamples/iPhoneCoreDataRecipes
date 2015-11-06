@@ -3,7 +3,7 @@
      File: RecipesAppDelegate.m
  Abstract: Application delegate that sets up a tab bar controller with two view controllers -- a navigation controller that in turn loads a table view controller to manage a list of recipes, and a unit converter view controller.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -55,7 +55,6 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize recipesController;
 @synthesize recipeListController;
 
 
@@ -74,28 +73,14 @@
     NSError *error;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-			// Handle error
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
+			abort();
         } 
-    }
-}
-
-
-#pragma mark -
-#pragma mark Saving
-
-/**
- Performs the save action for the application, which is to send the save:
- message to the application's managed object context.
- */
-- (IBAction)saveAction:(id)sender {
-	
-    NSError *error;
-    if (![[self managedObjectContext] save:&error]) {
-		// Handle error
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
     }
 }
 
@@ -165,9 +150,18 @@
 	NSError *error;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
-		// Handle error
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 
+		 Typical reasons for an error here include:
+		 * The persistent store is not accessible
+		 * The schema for the persistent store is incompatible with current managed object model
+		 Check the error message to determine what the actual problem was.
+		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		abort();
     }    
 		
     return persistentStoreCoordinator;
@@ -181,10 +175,7 @@
  Returns the path to the application's documents directory.
  */
 - (NSString *)applicationDocumentsDirectory {
-	
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-    return basePath;
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 
@@ -196,7 +187,6 @@
     [managedObjectModel release];
     [persistentStoreCoordinator release];
     
-    [recipesController release];
     [recipeListController release];
     [tabBarController release];
     [window release];

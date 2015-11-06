@@ -3,7 +3,7 @@
      File: ImperialPickerController.h
  Abstract: Controller to managed a picker view displaying imperial weights.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

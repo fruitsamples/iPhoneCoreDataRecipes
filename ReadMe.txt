@@ -8,23 +8,23 @@ This sample shows how you can use view controllers, table views, and Core Data i
 The application uses the domain of organizing and presenting recipes to show how you can use the view controller as the organizing unit to manage screenfuls of information, and how you can leverage table views to display and edit data in an elegant fashion.
 
 Amongst the techniques shown are how to:
-Combine tab bar and navigation controllers to create a complex navigation flow
-Customize a navigation bar
-Implement custom table view cells that reformat themselves in response to editing, removing unnecessary information to ensure that the display remains uncluttered
-Customize a table header view
-Present modal views
-Use multiple entities in a Core Data application
-Provide a default Core Data persistent store
+* Combine tab bar and navigation controllers to create a complex navigation flow
+* Customize a navigation bar
+* Implement custom table view cells that reformat themselves in response to editing, removing unnecessary information to ensure that the display remains uncluttered
+* Customize a table header view
+* Present modal views
+* Use multiple entities in a Core Data application
+* Provide a default Core Data persistent store
 
 ================================================================================
 BUILD REQUIREMENTS:
 
-Xcode 3.1 or later, Mac OS X v10.5.7 or later, iPhone OS 3.0
+Mac OS X v10.5.7 or later; Xcode 3.1.3 or later; iPhone OS 3.0.
 
 ================================================================================
 RUNTIME REQUIREMENTS:
 
-Mac OS X v10.5.7 or later, iPhone OS 3.0
+Mac OS X v10.5.7 or later; iPhone OS 3.0.
 
 ================================================================================
 PACKAGING LIST:
@@ -130,7 +130,22 @@ A table view cell that displays information about a Recipe.  It uses individual 
 
 
 TemperatureCell.{h,m}
+TemperatureCell.xib
 A table view cell that displays temperature in Centigrade, Fahrenheit, and Gas Mark.
+
+
+
+===========================================================================
+CHANGES FROM PREVIOUS VERSIONS:
+
+Version 1.1
+- Added UIGraphicsEndImageContext and textFieldShouldReturn: method to RecipeDetailViewController.m.
+- Added viewDidUnload methods to several view controllers.
+- Cleaned up error-handling code.
+- Added a xib file for TemperatureCell.
+
+Version 1.0
+- First version.
 
 
 ================================================================================

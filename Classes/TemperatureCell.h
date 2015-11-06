@@ -3,7 +3,7 @@
      File: TemperatureCell.h
  Abstract: A table view cell that displays temperature in Centigrade, Fahrenheit, and Gas Mark.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -52,14 +52,12 @@
     UILabel *cLabel;
     UILabel *fLabel;
     UILabel *gLabel;
-    
 }
 
-@property (nonatomic, retain) UILabel *cLabel;
-@property (nonatomic, retain) UILabel *fLabel;
-@property (nonatomic, retain) UILabel *gLabel;
+@property (nonatomic, retain) IBOutlet UILabel *cLabel;
+@property (nonatomic, retain) IBOutlet UILabel *fLabel;
+@property (nonatomic, retain) IBOutlet UILabel *gLabel;
 
-- (UILabel *)newLabelWithXOffset:(CGFloat)x;
 - (void)setTemperatureDataFromDictionary:(NSDictionary *)temperatureDictionary;
 
 @end

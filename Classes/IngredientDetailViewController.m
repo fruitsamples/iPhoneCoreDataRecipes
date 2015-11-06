@@ -3,7 +3,7 @@
      File: IngredientDetailViewController.m
  Abstract: Table view controller to manage editing details of a recipe ingredient -- its name and amount.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -79,6 +79,14 @@
 }
 
 
+- (void)viewDidLoad {
+	[super viewDidLoad];	
+	self.tableView.allowsSelection = NO;
+	self.tableView.allowsSelectionDuringEditing = NO;
+}
+
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
@@ -117,11 +125,6 @@
 }
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
-
 #pragma mark -
 #pragma mark Save and cancel
 
@@ -154,9 +157,13 @@
 	 */
 	NSError *error = nil;
 	if (![context save:&error]) {
-		// Handle error
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		abort();
 	}
 	
     [self.navigationController popViewControllerAnimated:YES];

@@ -3,7 +3,7 @@
      File: InstructionsViewController.m
  Abstract: View controller to manage a text view to allow the user to edit instructions for a recipe.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -64,6 +64,13 @@
 }
 
 
+- (void)viewDidUnload {
+	self.instructionsText = nil;
+	self.nameLabel = nil;
+	[super viewDidUnload];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {    
     // Update the views appropriately
     nameLabel.text = recipe.name;    
@@ -93,9 +100,13 @@
 		NSManagedObjectContext *context = recipe.managedObjectContext;
 		NSError *error = nil;
 		if (![context save:&error]) {
-			// Handle error
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
+			abort();
 		}
 	}		
 }

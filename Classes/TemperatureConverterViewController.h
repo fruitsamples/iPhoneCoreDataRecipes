@@ -3,7 +3,7 @@
      File: TemperatureConverterViewController.h
  Abstract: View controller to display cooking temperatures in Centigrade, Fahrenheit, and Gas Mark.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -47,12 +47,18 @@
  
  */
 
+@class TemperatureCell;
+
 @interface TemperatureConverterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSArray *temperatureData;
+	
     UITableView *tableView;
+	TemperatureCell *temperatureCell;
 }
 
 @property (nonatomic, retain) NSArray *temperatureData;
+
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet TemperatureCell *temperatureCell;
 
 @end

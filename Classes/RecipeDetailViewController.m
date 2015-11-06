@@ -4,7 +4,7 @@
  Abstract: Table view controller to manage an editable table view that displays information about a recipe.
  The table view uses different cell types for different row types.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -127,17 +127,21 @@
     [self.tableView reloadData]; 
 }
 
-- (void)viewDidUnoad {
+
+- (void)viewDidUnload {
     self.tableHeaderView = nil;
 	self.photoButton = nil;
 	self.nameTextField = nil;
 	self.overviewTextField = nil;
 	self.prepTimeTextField = nil;
+	[super viewDidUnload];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
 
 #pragma mark -
 #pragma mark Editing
@@ -161,13 +165,9 @@
     
     if (editing) {
         [self.tableView insertRowsAtIndexPaths:ingredientsInsertIndexPath withRowAnimation:UITableViewRowAnimationTop];
-		// nameTextField.borderStyle = UITextBorderStyleBezel;
-		// overviewTextField.borderStyle = UITextBorderStyleBezel;
 		overviewTextField.placeholder = @"Overview";
 	} else {
         [self.tableView deleteRowsAtIndexPaths:ingredientsInsertIndexPath withRowAnimation:UITableViewRowAnimationTop];
-		// nameTextField.borderStyle = UITextBorderStyleNone;
-		// overviewTextField.borderStyle = UITextBorderStyleNone;
 		overviewTextField.placeholder = @"";
     }
     
@@ -180,9 +180,13 @@
 		NSManagedObjectContext *context = recipe.managedObjectContext;
 		NSError *error = nil;
 		if (![context save:&error]) {
-			// Handle error
+			/*
+			 Replace this implementation with code to handle the error appropriately.
+			 
+			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+			 */
 			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
+			abort();
 		}
 	}
 }
@@ -200,6 +204,12 @@
 	else if (textField == prepTimeTextField) {
 		recipe.prepTime = prepTimeTextField.text;
 	}
+	return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
 	return YES;
 }
 
@@ -357,7 +367,7 @@
             break;
 			
         case INSTRUCTIONS_SECTION:
-            nextViewController = [[InstructionsViewController alloc] initWithNibName:@"RecipeInstructionsView" bundle:nil];
+            nextViewController = [[InstructionsViewController alloc] initWithNibName:@"InstructionsView" bundle:nil];
             ((InstructionsViewController *)nextViewController).recipe = recipe;
             break;
 			
@@ -502,14 +512,17 @@
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)selectedImage editingInfo:(NSDictionary *)editingInfo {
-	NSManagedObject *image = recipe.image;
 	
-    // If the recipe doesn't have an image, then create an Image object for it.
-	if (image == nil) {
-		image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:recipe.managedObjectContext];
-		recipe.image = image;
+	// Delete any existing image.
+	NSManagedObject *oldImage = recipe.image;
+	if (oldImage != nil) {
+		[recipe.managedObjectContext deleteObject:oldImage];
 	}
 	
+    // Create an image object for the new image.
+	NSManagedObject *image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:recipe.managedObjectContext];
+	recipe.image = image;
+
 	// Set the image for the image managed object.
 	[image setValue:selectedImage forKey:@"image"];
 	
@@ -526,6 +539,7 @@
 	UIGraphicsBeginImageContext(rect.size);
 	[selectedImage drawInRect:rect];
 	recipe.thumbnailImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
 	
     [self dismissModalViewControllerAnimated:YES];
 }

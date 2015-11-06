@@ -3,7 +3,7 @@
      File: Recipe.h
  Abstract: Model class to represent a recipe.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -47,7 +47,7 @@
  
  */
 
-@interface UIImageToDataTransformer : NSValueTransformer {
+@interface ImageToDataTransformer : NSValueTransformer {
 }
 @end
 

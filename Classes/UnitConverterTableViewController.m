@@ -4,7 +4,7 @@
  Abstract: Table view controller to display two table view cells to allow the user to select a unit converter.
 
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -88,7 +88,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:MyIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
     }
     
     switch ([indexPath section]) {
@@ -110,10 +110,10 @@
     
     switch ([indexPath section]) {
         case WeightConverterIndex:
-            converterController = [[WeightConverterViewController alloc] initWithNibName:@"WeightConverter" bundle:[NSBundle mainBundle]];
+            converterController = [[WeightConverterViewController alloc] initWithNibName:@"WeightConverter" bundle:nil];
             break;
         case TemperatureConverterIndex:
-            converterController = [[TemperatureConverterViewController alloc] initWithNibName:@"TemperatureConverter" bundle:[NSBundle mainBundle]];
+            converterController = [[TemperatureConverterViewController alloc] initWithNibName:@"TemperatureConverter" bundle:nil];
             break;
     }
     

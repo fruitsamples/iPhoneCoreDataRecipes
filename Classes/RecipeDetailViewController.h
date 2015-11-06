@@ -4,7 +4,7 @@
  Abstract: Table view controller to manage an editable table view that displays information about a recipe.
  The table view uses different cell types for different row types.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following

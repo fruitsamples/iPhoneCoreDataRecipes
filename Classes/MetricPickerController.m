@@ -3,7 +3,7 @@
      File: MetricPickerController.m
  Abstract: Controller to managed a picker view displaying metric weights.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -234,6 +234,7 @@
 
 - (void)dealloc {
     [pickerView release];
+	[label release];
 	[super dealloc];
 }
 
