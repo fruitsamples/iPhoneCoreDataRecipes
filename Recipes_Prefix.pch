@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'Recipes' target in the 'Recipes' project
+// Prefix header for all source files of the 'iPhoneCoreDataRecipes' target in the 'iPhoneCoreDataRecipes' project
 //
 
 #ifdef __OBJC__

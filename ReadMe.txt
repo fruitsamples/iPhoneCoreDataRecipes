@@ -19,16 +19,15 @@ Amongst the techniques shown are how to:
 ================================================================================
 BUILD REQUIREMENTS:
 
-Mac OS X v10.5.7 or later; Xcode 3.1.3 or later; iPhone OS 3.0.
+iOS 4.0 SDK.
 
 ================================================================================
 RUNTIME REQUIREMENTS:
 
-Mac OS X v10.5.7 or later; iPhone OS 3.0.
+iPhone OS 3.2 or later.
 
 ================================================================================
 PACKAGING LIST:
-
 
 Model and Model Classes
 -----------------------
@@ -36,107 +35,94 @@ Model and Model Classes
 Recipes.xcdatamodel
 Core Data model file containing the Core Data schema for the application.
 
-
 Recipe.{h,m}
 Model class to represent a recipe, including UIImageToDataTransformer -- a reversible value transformer to transform from a UIIMage object to an NSData object.
-
 
 Ingredient.{h,m}
 Model class to represent an ingredient.
 
-
-
 Application Configuration
 -------------------------
-
 RecipesAppDelegate.{h,m}
 MainWindow.xib
 Application delegate that sets up a tab bar controller with two view controllers -- a navigation controller that in turn loads a table view controller to manage a list of recipes, and a unit converter view controller.
 
-
-
 Recipes View Controllers
 ------------------------
-
 RecipeListTableViewController.{h,m}
 Table view controller to manage an editable table view that displays a list of recipes.
 This is the "topmost" view controller in the Recipes stack.
-
 
 RecipeDetailViewController.{h,m}
 DetailHeaderView.xib
 Table view controller to manage as table view that displays information about a recipe.  The table view header is loaded from a separate nib file.
 The user can edit all aspects of the recipe -- the name, overview, and preparation time "inline" in the table view header; the type by navigating to a list of all the types and selecting one from the list (see IngredientDetailViewController); the photo by using a photo picker; and so on.
 
-
 RecipeAddViewController.{h,m}
 RecipeAddView.xib
 View controller to allow the user to add a new recipe and choose its name.
 
-
 IngredientDetailViewController.{h,m}
 Table view controller to manage editing details of a recipe ingredient -- its name and amount.
 
-
 TypeSelectionViewController.{h,m}
 Table view controller to allow the user to select the recipe type.
-
 
 InstructionsViewController.{h,m}
 RecipeInstructionsView.xib
 View controller to manage a text view to allow the user to edit instructions for a recipe.
 
-
 RecipePhotoViewController.{h,m}
 View controller to manage a view to display a recipe's photo.
 
 
-
 Conversion View Controllers
 ---------------------------
-
 TemperatureConverterViewController.{h,m}
 View controller to display a table view showing cooking temperatures in Centigrade, Fahrenheit, and Gas Mark.
 
-
 UnitConverterTableViewController.{h,m}
 Table view controller to allow the user to select a unit converter.
-
 
 WeightConverterViewController.{h,m}
 View controller to manage conversion of metric to imperial units of weight and vice versa.
 The controller uses two UIPicker objects to allow the user to select the weight in metric or imperial units.
 
-
 ImperialPickerController.{h,m}
 Controller to managed a picker view displaying imperial weights.
-
 
 MetricPickerController.{h,m}
 Controller to managed a picker view displaying metric weights.
 
 
-
 Table view cells
 ----------------
-
 EditingTableCell.{h,m}
 EditingTableCell.xib
 A table view cell that displays a label on the left and a text field on the right so that the user can edit text in place.
 
-
 RecipeTableViewCell.{h,m}
 A table view cell that displays information about a Recipe.  It uses individual subviews of its content view to show the name, picture, description, and preparation time for each recipe.  If the table view switches to editing mode, the cell reformats itself to move the preparation time off-screen, and resizes the name and description fields accordingly.
-
 
 TemperatureCell.{h,m}
 TemperatureCell.xib
 A table view cell that displays temperature in Centigrade, Fahrenheit, and Gas Mark.
 
 
-
 ===========================================================================
 CHANGES FROM PREVIOUS VERSIONS:
+
+Version 1.4
+- Deployment target set to iPhone OS 3.2.
+
+Version 1.3
+- Replaced deprecated "didFinishPickingImage" method of UIImagePickerController
+- Upgraded project to build with the iOS 4 SDK.
+
+Version 1.2
+- Corrected a memory management error in IngredientDetailViewController.m.
+- Updated implementation of controller:didChangeObject:atIndexPath:forChangeType:newIndexPath: in RecipeListTableViewController.m.
+- Changed base SDK to 3.1.
 
 Version 1.1
 - Added UIGraphicsEndImageContext and textFieldShouldReturn: method to RecipeDetailViewController.m.
@@ -147,6 +133,5 @@ Version 1.1
 Version 1.0
 - First version.
 
-
 ================================================================================
-Copyright (C) 2009 Apple Inc. All rights reserved.
+Copyright (C) 2010 Apple Inc. All rights reserved.

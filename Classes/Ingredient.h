@@ -1,9 +1,8 @@
-
 /*
      File: Ingredient.h
  Abstract: Model class to represent a recipe.
  
-  Version: 1.1
+  Version: 1.4
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -43,14 +42,14 @@
  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
  
- Copyright (C) 2009 Apple Inc. All Rights Reserved.
+ Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
  */
 
 @class Recipe;
 
-@interface Ingredient :  NSManagedObject  
-{
+@interface Ingredient : NSManagedObject {
+
 }
 
 @property (nonatomic, retain) NSString *name;
